@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#000000">
+  <link rel="stylesheet" href="gators.css">
+</head>
+
+<body>
+  <div id="greenbox">
+    <input type="number" id="inputnum">
+    <button id="gatorsbutton">ワニ放出!</button>
+    <button id="clearbutton">クリア</button>
+    <button id="hint">↑数字を選択してください↑</button>
+
+  </div>
+  <div id="bluebox"></div>
+
+
+  <script src="gators.js"></script>
+</body>
+
+</html>
+
+
+
+
+const gators = document.querySelector("#gatorsbutton");//アリゲーター放出ボタンのID取得
+
+gators.addEventListener("click", function () {
+    const counter = document.querySelector("#inputnum");
+    const gatorsBox = document.querySelector("#bluebox");
+    gatorsBox.innerText = "";
+    for (let i = 1; i <= counter.value; i++) {
+        if(i % 10 === 0){
+        gatorsBox.innerText = "🐖"+gatorsBox.innerText + "🐊"
+        } else {
+        gatorsBox.innerText += "🐊"
+        }
+    }
+ }
+)
+
+const clear = document.querySelector("#clearbutton");//クリアボタンのID取得
+
+clear.addEventListener("click", function () {
+    const gatorsBox = document.querySelector("#bluebox");
+    const counter = document.querySelector("#inputnum");
+    gatorsBox.innerText = "";
+    counter.value = "";
+    gators.style.display = "none";
+    hint.style.display = "block";
+    
+}
+)
+
+const hint = document.querySelector("#hint");//ヒントテキストのID取得
+const input = document.querySelector("#inputnum");
+    
+input.addEventListener("change",function(){
+        if(input.value !== ""){
+            gators.style.display = "block";
+            hint.style.display = "none"
+        } else { 
+            hint.style.display = "block";
+            gators.style.display = "none";
+        }
+    }
+)    
+
+
+
+
+
+#greenbox {
+    width: 200px;
+    height: 200px;
+    background-color: green;
+    margin: auto;
+    position: relative
+}
+
+#bluebox {
+    width: 300px;
+    background-color: blue;
+    margin: auto;
+}
+
+#greenbox input {
+    height: 30px;
+    width: 50px;
+    font-size: 10px;
+    left:50%;
+    transform: translateX(-50%);
+    position: absolute;
+    top:40px;
+
+}
+
+#gatorsbutton {
+    bottom: 50px;
+    left:50%;
+    position: absolute;
+    transform: translate(-50%);
+    height: 50px;
+    width: 150px;
+    display: none;
+    background-color: rgba(234, 0, 255, 0.852);
+}
+
+#clearbutton {
+    position:absolute;
+    bottom: 0px;
+    background-color: red;
+    right:0%;
+    
+}
+
+#hint {
+    position:absolute;
+    bottom: 50px;
+    background-color: rgb(20, 8, 240);
+    color: white;
+    left: 50%;
+    transform: translate(-50%);
+    height: 50px;
+    width: 180px;
+   
+    }
+
+
+
+
+
+
+
+
+
+
+
+
